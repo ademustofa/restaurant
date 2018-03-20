@@ -1,0 +1,67 @@
+
+// Fonts
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$color : linear-gradient(120deg, #1affb2, #1affb2 20%, #ffff99 20%, #ffff99 80%, #1affb2 80%);
+$raleway : 'Raleway', sans-serif;
+
+body{
+	background-image: $color;
+}
+
+
+
+.content{
+	.title{
+		color: white;
+	}
+	.links a{
+		color: #262626;
+	}
+}
+
+.links {
+	
+	a {
+		font-family	: $raleway;
+		transition	: all 200ms ease-in;
+    	font-size	: 12px;
+    	border-left: 2px solid black;
+	}
+
+	a:hover {
+		transition	: all 200ms ease-in;
+	    font-size	: 20px;
+	    box-shadow	: 2px, 2px, 2px, #404040;
+	}
+
+}
+
+.content {
+
+	.title {
+		font-family					: georgia;
+		font-style					: italic;
+		text-shadow					: 1px 1px 2px black, 0 0 25px #ff4d4d, 0 0 5px darkblue;
+
+		h1{
+			font-size					:72px;
+			animation					: slides 2s ease-in;
+			animation-direction			: alternate-reverse;
+			animation-iteration-count	: infinite;
+
+		}
+
+	}
+
+}
+
+
+
+

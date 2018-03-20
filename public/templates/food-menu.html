@@ -1,0 +1,66 @@
+<div ng-include="global.navUrl"></div>
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+					    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+					    <input type="text" class="form-control" ng-model="search" placeholder="Search Food">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4" id="box-menu" ng-repeat="data in food | filter:search">
+					<div class="polaroid" ng-hide>
+						<img src="/image/food.jpg" class="food-image" alt="Norway" style="width:100%">
+					  	<div class="text-menu">
+						    <p class="food-name">{{ data.name }}</p>
+						    <p class="food-price"><strong>Rp.{{ data.price }}</strong></p>
+						    <button class="btn btn-primary btn-block" ng-click="addToList($index)" ng-disabled="data.name == food.name"><span class="glyphicon glyphicon-plus"></span> Add to List</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			<div class="col-md-4">
+				<div class="my-order">
+					<div class="panel panel-primary">
+				      	<div class="panel-heading order-name">Order List</div>
+				      	<div class="panel-body">
+				      		<table class="table">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Price</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="order in myOrderList">
+										<td>{{ order.name }}</td>
+										<td><strong>Rp.{{ order.price }}</strong></td>
+										<td><button class="btn btn-danger" ng-click="removeOrder($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
+									</tr>
+								</tbody>
+							</table>
+				      	</div>
+				      	<div class="panel-footer">
+				      		<div class="row">
+				      			<div class="col-md-8">
+				      				Total : Rp.{{ total }}
+				      			</div>
+				      			<div class="col-md-4">
+				      				<button class="btn btn-primary btn-block" ng-click="getTotal()">Order</button>
+				      			</div>
+				      		</div>
+				      	</div>
+				    </div>
+			</div>
+			
+
+	</div>
+</div>

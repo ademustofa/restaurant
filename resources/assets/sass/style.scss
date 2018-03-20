@@ -1,0 +1,310 @@
+// Fonts
+/* @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+ */
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$raleway : 'Raleway', sans-serif;
+$poppins: 'Poppins', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+$color : linear-gradient(120deg, #1affb2, #1affb2 20%, #ffff99 20%, #ffff99 80%, #1affb2 80%);
+$color2 : linear-gradient(to bottom right, #001a4d, #999999);
+
+#home{
+	margin-top: 50px;
+}
+
+/* .bg-login{
+    background         : $color no-repeat center fixed;
+    background-size: cover;
+} */
+
+
+.navbar{
+    background : #001a4d;
+
+    .navbar-toggle .icon-bar {
+        background : #fff;
+    }
+    
+    .navbar-nav > {
+        padding         : -20px;
+        
+        li >  a {
+            font-family     : $roboto;
+            font-size       : 1.1em;
+            font-weight     : 550;
+            line-height     : 1.7em;
+            color           : #f2f2f2;
+
+
+            &:hover{
+                color                   : #fff;
+                background       : none;
+                transition          : all 200ms ease-in;
+                text-shadow     : 1px 1px 2px black, 0 0 25px #2196f3, 0 0 5px darkblue;
+            }
+        }
+    
+    }
+
+    .dropdown-menu {
+        li  {
+            padding         : 4px;
+    
+            a {
+                font-family     : $roboto;
+                /* font-size       : 1.1em;
+                font-weight     : 550;
+                line-height     : 1.7em;
+                color           : #1a1a1a;
+                padding         : 10px;
+                border-radius   : 3px;
+                
+                &:hover{
+                    color           : #fff;
+                    background      : none;
+                    text-shadow: 1px 1px 2px black, 0 0 25px #1a1a1a, 0 0 5px darkblue;
+                 } */
+            }
+
+            .notif{
+                border-bottom: 1px solid #ccc;
+            }
+        }
+    
+    }
+}
+
+.menu-login{
+	margin-top		: 100px;
+	margin-left		: 20px;
+	padding	        : 10px;
+	border 		    : 2px solid #ccc;
+    box-shadow      : 8px 8px 5px grey;
+	border-radius	: 5px;
+	font-family     : $roboto;
+    font-size       : 1.1em;
+    font-weight     : 100;
+    line-height     : 1.7em;
+
+	.register, .login{
+		padding: 20px;
+	}
+
+	nav-tabs a{
+		font-weight: bold;
+	}
+}
+
+#btn-basic{
+    background  : rgb(0, 153, 115);
+    color       :  #f2f2f2;
+}
+
+.gallery-container{
+    cursor: pointer;
+}
+
+#sidebar{
+    width       : 250px;
+    position    : fixed;
+    left        : 0;
+    top         : 65px;
+    background  : #7386D5;
+    height      : 90vh;
+    font-family : 'Poppins', sans-serif;
+
+    .sidebar-header {
+        padding     : 20px;
+        background  : #6d7fcc;
+    }
+
+    ul.menu-sidebar {
+        padding         : 20px 0;
+        border-bottom   : 1px solid #47748b;
+    }
+
+    ul li a {
+        color       : #fff;
+        padding     : 10px;
+        font-size   : 1.1em;
+        display     : block;
+    }
+
+    ul li a:hover {
+        color           : #7386D5;
+        background      : #fff;
+        text-decoration : none;
+    }
+
+    a[aria-expanded="true"] {
+        color: #fff;
+        background: #6d7fcc;
+    }
+
+    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+        content: '\e259';
+        display: block;
+        position: absolute;
+        right: 20px;
+        font-family: 'Glyphicons Halflings';
+        font-size: 0.6em;
+    }
+
+    a[aria-expanded="true"]::before {
+        content: '\e260';
+    }
+
+    ul ul a {
+        font-size: 1em !important;
+        padding-left: 30px !important;
+        background: #6d7fcc;
+    }
+
+}
+
+#verification{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 65px; 
+    font-size: 1.1em;
+}
+
+.message{
+    position: absolute;
+    bottom: 0;
+    left: 70%;
+    width: 250px;
+    .panel-heading > h4:hover{
+        text-decoration: none;
+    }
+}
+
+
+%message{
+    height: 470px;
+    overflow: scroll;
+    background: #fff; 
+}
+
+#message-body{
+    @extend %message;
+    font-size: 1.2em;
+}
+
+#message-user{
+    @extend %message;
+    font-size: 1.3em;
+
+    ul li{
+        list-style-type: none;
+
+        a:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+#input-message{
+    resize: none;
+    overflow:hidden;
+    display:block;
+}
+
+%message-chat{
+    width: 51%;
+    margin-top: 10px;
+    background: #2196f3;
+    color: #fff;
+    border-radius: 3px;
+    height: auto;
+}
+
+
+.other-message{
+    @extend %message-chat;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 10% 76%, 0% 100%, 4% 76%, 0% 75%);
+                clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 10% 76%, 0% 100%, 4% 76%, 0% 75%);
+    p{
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+.self-message{
+    @extend %message-chat;
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 96% 76%, 100% 100%, 90% 76%, 0% 75%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 96% 76%, 100% 100%, 90% 76%, 0% 75%);
+     p{
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+.chat-message, .chat-users{
+    height: 535px;
+}
+
+#box-menu{
+    padding: 33px;
+}
+
+.my-order{
+    margin-top: 70px;
+    .order-name{
+        font-size: 1.1em;
+        font-weight: bolder;
+        padding-left: 40%;
+    }
+
+}
+
+.polaroid {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    -webkit-transition: -webkit- all .2s ease-in-out;
+                 transition: all .2s ease-in-out;
+    &:hover{
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+    }
+    .food-name{
+        font-size: 1.2em;
+        font-family: "Comic Sans MS", cursive;
+    }
+    .food-price{
+        font-size: 1.1em;
+    }
+    .text-menu {
+      padding: 10px;
+    }
+   
+        
+        
+    
+}
+
+
+
+
+
+
+
+
+
+
+

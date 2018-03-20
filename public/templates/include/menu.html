@@ -1,0 +1,52 @@
+<nav class="navbar" ng-controller="navController">
+  <div class="container-fluid">
+    <!-- <div class="navbar-header">
+      <a class="navbar-brand" href="#">Laravel Angular</a>
+    </div> -->
+    <ul class="nav navbar-nav">
+      <li><a href="#!/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+      <li><a href="#!/header">Header</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li class="dropdown">
+          <a class="dropdown-toggle gallery" data-toggle="dropdown" href="javascript:void(0)" style="font-size: 1.1em" ng-click="readNotification()">
+          <i class="fa fa-bell"></i> <span class="label label-pill label-danger" ng-show="countNotif > 0">{{ countNotif }}</span>
+            </a>
+          <ul class="dropdown-menu" id="gallery-dropdown" >
+              <li ng-repeat="data in notif">
+                <a href="" class="notif">
+                  <strong><i class="fa fa-user-circle-o"></i> {{ data.subject }}</strong><br>
+                  <small><em>{{ data.message }}</em></small><br>
+                  <small style="margin-left: 90px;"><em><i class="fa fa-clock-o"></i>{{ data.created_at }}</em></small>
+                </a>
+              </li>
+            
+            
+            <li role="separator" class="divider"></li>
+            <li style="text-align: center;"><a href="">See All notification</a></li>
+        </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle gallery" data-toggle="dropdown" href="javascript:void(0)" style="font-size: 1.1em">
+          <i class="fa fa-envelope"></i> <span class="label label-pill label-danger">3</span>
+            </a>
+          <ul class="dropdown-menu" id="gallery-dropdown">
+
+            <li>asdad</li>
+            <li>asdad</li>
+            <li role="separator" class="divider"></li>
+            <li style="text-align: center;"> See All Message </li>
+        </ul>
+        </li>
+      <li><a href="#!/login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign In</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <div class="alert alert-success alert-dismissable fade in" ng-show="showVerification" id="verification">
+         <div class="text-center">
+            <strong><i>Your account has been created!</i></strong>&nbsp;&nbsp; Please verification your account on your email
+         </div>
+    </div>

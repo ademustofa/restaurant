@@ -1,0 +1,48 @@
+<div ng-include="global.navUrl"></div>
+
+<div class="container-fluid">
+<!-- 	<h1>{{ user.data.name }} Chat</h1> -->
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<div class="panel panel-success chat-message">
+				<div class="panel-heading">
+			    	<h4 class="panel-title" id="received">My Chat</h4>
+			    </div>
+				<div class="panel-body" id="message-body">
+						
+					<!-- Chat Message -->
+					<div ng-repeat="chat in chatting">
+			       		<div ng-class="chat.from === sessionData.data.id ? 'self-message' : 'other-message'"> 
+			                <p><small><em>{{ chat.user_from.name }}</em></small> <br> {{chat.message}} </p> 	
+		                </div>
+		            </div>
+
+				</div>
+				<div class="panel-footer">
+					<!-- <input type="text" class="from" value="{{user.data.id}}" hidden="true"> -->
+				  	<textarea class="form-control input-sm" name="message" id="input-message" cols="1" rows="2" placeholder="type message" ng-model="messageData" ng-keydown="$event.keyCode === 13 && sendMessage()"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-3 col-md-offset-1">
+
+			<div class="panel panel-success chat-users">
+				<div class="panel-heading">
+			    	<h4 class="panel-title">Users</h4>
+			    </div>
+				<div class="panel-body" id="message-user">
+						
+						<ul>
+							<li ng-repeat="data in user"><a href="javascript:void(0)" ng-click="sendTo(data.id, data.name)" ng-hide="data.name == session.data.name">{{data.name}}</a></li>
+						</ul>
+
+				</div>
+				<div class="panel-footer">
+				  	<input type="text" class="form-control" placeholder="Search User">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

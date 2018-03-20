@@ -1,0 +1,41 @@
+<nav class="navbar" ng-controller="navController">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dashboard"><a href="#!/dashboard"><i class="fa fa-dashboard" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+        <li class="data"><a href="#!/user-data"> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Data User</a></li>
+        <li class="data"><a href="#!/food"> <i class="fa fa-lemon"></i>&nbsp;Foods</a></li>
+        <li class="data"><a href="#!/food-menu"> <i class="fa fa-lemon"></i>&nbsp;Menu</a></li>
+        <li class="data"><a href="#!/chat"> <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;My Chat</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle gallery" data-toggle="dropdown" href="javascript:void(0)"><i class="fa fa-file-photo-o" aria-hidden="true"></i>&nbsp; Gallery
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" id="gallery-dropdown">
+            <li><a href="#!/add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Gallery</a></li>
+            <li><a href="#!/view"><i class="fa fa-image" aria-hidden="true"></i>&nbsp; View Gallery</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <li class="dropdown">
+          <a class="dropdown-toggle gallery" data-toggle="dropdown" href="javascript:void(0)">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;{{ user.data.name }}
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href=""><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp; Profile</a></li>
+            <li><a href=""><i class="fa fa-gears" aria-hidden="true"></i>&nbsp; Setting</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:void(0)" ng-click="doLogout()"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

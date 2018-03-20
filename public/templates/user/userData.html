@@ -1,0 +1,111 @@
+<div ng-include="global.navUrl"></div>
+
+<div class="container">
+	<div id="home">
+
+	<button uib-popover="Add New Data" popover-trigger="'mouseenter'" class="btn btn-primary" id="myBtn" ng-click="showAddModal()"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;</button>
+			<!-- <button class="btn btn-default" id="coba">form update</button> -->
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			    <div class="modal-content">
+			        <div class="modal-header" style="padding:35px 50px; text-align: center;">
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        	<h4>Add New Data</h4>
+			        </div>
+			       	<div class="modal-body" style="padding:40px 50px;">
+			        	<form>
+			            <div class="form-group">
+			             	<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+			              	<input type="text" class="form-control" placeholder="Enter email" ng-model="name">
+			            </div>
+			            <div class="form-group">
+			              	<label for="usrname"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+			              	<input type="email" class="form-control" placeholder="Enter email" ng-model="email">
+			            </div>
+			            <div class="form-group">
+			              	<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+			              	<input type="password" class="form-control" placeholder="Enter password" ng-model="password">
+			            </div>
+			            
+			              <button class="btn btn-success btn-block" ng-click="addData()"> Add</button>
+			          </form>
+			        </div>
+
+			    </div>
+			  
+			</div>
+		</div>
+		
+		<br>
+
+
+			<div class="col-md-3 col-md-offset-9">
+				<div class="input-group">
+				    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+				    <input type="text" class="form-control" ng-model="hasil" placeholder="Search Data">
+				</div>
+			</div>
+			<br>
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in data | filter:hasil | orderBy:'id'">
+						<td>{{ row.name }}</td>
+						<td>{{ row.email }}</td>
+						<td>
+							<button uib-popover="Delete Data" popover-trigger="'mouseenter'" class="btn btn-danger" ng-click="deleteData($index)"><span class="glyphicon glyphicon-trash"></span></button>
+							<button uib-popover="Update Data" popover-trigger="'mouseenter'" class="btn btn-success" ng-click="showModal($index)"><span class="glyphicon glyphicon-edit"></span></button>
+
+			<div class="modal fade" id="update-modal" role="dialog">
+				<div class="modal-dialog">
+				    
+				     <!-- Modal content-->
+				    <div class="modal-content">
+
+				        <div class="modal-header" style="padding:35px 50px; text-align: center;">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="title">Update Data</h4>
+				        </div>
+				        <div class="modal-body" style="padding:40px 50px;" id="update-html">
+				        <form ng-submit="editData()">
+				        	
+				            <div class="form-group">
+				              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+				              <input type="text" class="form-control uptName" placeholder="Enter email" ng-model="new.name">
+				            </div>
+				            <div class="form-group">
+				              <label for="usrname"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+				              <input type="email" class="form-control uptEmail" placeholder="Enter email" ng-model="new.email">
+				            </div>
+				            <!-- <div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+				              <input type="password" class="form-control" placeholder="Enter password" ng-model="new.password">
+				            </div> -->
+				            
+				              <button type="submit" class="btn btn-success btn-block"> Update</button>
+				        </form>
+				        </div>
+				    </div>
+				      
+				</div>
+		</div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		
+		
+</div>
+</div>
