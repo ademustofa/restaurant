@@ -23,10 +23,10 @@ class OrderController extends Controller
     
     public function store_order(Request $request)
     {
-        $order = new Order;
-        $order->user_id = Auth::user()->id;
+        $order              = new Order;
+        $order->user_id     = Auth::user()->id;
         $order->total_price = $request->total;
-        $order->status = 1;
+        $order->status      = 1;
         $order->save();
 
         $order_id = $order->id;
@@ -35,17 +35,14 @@ class OrderController extends Controller
 
     }
 
-    public function storeorder_detail(Request $request)
+    public function store_order_detail(Request $request)
     {
-        $detail = new Order_detail;
-        $detail->user_id = Auth::user()->id;
-        $detail->total_price = $request->total;
-        $detail->status = 1;
+        $detail             = new Order_detail;
+        $detail->order_id   = $request->order_id;
+        $detail->food_id    = $request->food_id;
+        $detail->quantity   = $request->qty;
+        $detail->total      = $request->jumlah;
         $detail->save();
-
-        $order_id = $order->id;
-
-        return response()->json($order_id);
     }
 
     

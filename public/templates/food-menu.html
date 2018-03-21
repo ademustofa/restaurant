@@ -34,24 +34,32 @@
 					<div class="panel panel-primary">
 				      	<div class="panel-heading order-name">Order List</div>
 				      	<div class="panel-body">
-				      		<table class="table">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Price</th>
-										<th>Total</th>			
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="order in myOrderList">
-										<td style="width: 120px">{{ order.name }}</td>
-										<td><strong>Rp.{{ order.price }}</strong></td>
-										<td style="width: 50px"><input type="number" class="form-control"></td>
-										<td><button class="btn btn-danger" ng-click="removeOrder($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
-									</tr>
-								</tbody>
-							</table>
+				      		<div style="text-align: center;" ng-hide="orderNoData">
+				      			No Order Data
+				      		</div>				
+				      		
+				      		<div ng-show="orderData">
+					      		<table class="table">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Price</th>
+											<th>Total</th>			
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="order in myOrderList track by $index">
+											<td style="width: 120px">{{ order.name }}</td>
+											<td><strong>Rp.{{ order.price }}</strong></td>
+											<td style="width: 50px">
+												<input type="number" class="form-control" ng-change="jmlOrder($index, qty)" ng-model="qty" value="1">
+											</td>
+											<td><button class="btn btn-danger" ng-click="removeOrder($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 				      	</div>
 				      	<div class="panel-footer">
 				      		<div class="row">

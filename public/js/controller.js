@@ -550,36 +550,79 @@ angular.module('app').controller('orderController', function ($scope, foodModel,
 
 	var myOrder = [];
 
+	//  Get Total Price Order
 	$scope.getTotalOrder = function () {
 		if (myOrder.length > 0) {
 			var sumTotal = myOrder.reduce(function (a, b) {
-				return { price: a.price + b.price };
+				return { jumlah: a.jumlah + b.jumlah };
 			});
-			$scope.total = sumTotal.price;
+			$scope.total = sumTotal.jumlah;
 		} else {
 			$scope.total = 0;
 		}
 	};
 
+	// Add Fodd to Menu List
 	$scope.addToList = function ($index) {
 
 		var food = $scope.food[$index];
 
-		myOrder.push(food);
+		$scope.qty = 1;
 
-		$scope.choosen = $scope.food[$index].name;
+		var data = {
+			id: food.id,
+			name: food.name,
+			price: food.price,
+			qty: 1,
+			jumlah: food.price
+		};
+
+		myOrder.push(data);
+
+		/*$scope.choosen = $scope.food[$index].name;*/
+
+		$scope.getTotalOrder();
+		$scope.orderList();
+	};
+
+	// Show My Order Menu
+	$scope.orderList = function () {
+
+		if (myOrder.length > 0) {
+			$scope.orderData = true;
+			$scope.orderNoData = true;
+		} else {
+			$scope.orderData = false;
+			$scope.orderNoData = false;
+		}
+
+		$scope.myOrderList = myOrder;
+	};
+	$scope.orderList();
+
+	// Set Total Price Order
+	$scope.jmlOrder = function ($index, qty) {
+		var food = myOrder[$index];
+
+		if (myOrder.length > 0) {
+			if (myOrder[$index].name === food.name) {
+				myOrder[$index].qty = qty;
+				myOrder[$index].jumlah = myOrder[$index].price * qty;
+			}
+		}
 
 		$scope.getTotalOrder();
 	};
 
-	$scope.myOrderList = myOrder;
-
+	// Remove Menu From List Order
 	$scope.removeOrder = function (id) {
 		$scope.myOrderList.splice(id, 1);
 		console.log($scope.myOrderList);
 		$scope.getTotalOrder();
+		$scope.orderList();
 	};
 
+	// Do Order
 	$scope.order = function () {
 		var total_price = $scope.total;
 		var data = {
@@ -587,11 +630,37 @@ angular.module('app').controller('orderController', function ($scope, foodModel,
 			token: token
 		};
 
-		orderModel.sendOrder(data).then(function (response) {
-			console.log(response.data);
-		});
+		console.log(myOrder);
 
-		/*console.log(data);*/
+		orderModel.sendOrder(data).then(function (response) {
+			var id_order = response.data;
+
+			myOrder.forEach(function (val) {
+				var data = {
+					token: token,
+					order_id: id_order,
+					food_id: val.id,
+					qty: val.qty,
+					total: val.jumlah
+				};
+
+				console.log(data);
+
+				orderModel.sendOrderDetail(data).then(function (response) {
+					console.log("Order Detail was saved");
+				});
+
+				swal({
+					type: 'success',
+					title: 'Your order has been sent',
+					text: 'Please wait.....'
+				});
+			});
+
+			myOrder.splice(0, myOrder.length);
+			$scope.orderList();
+			$scope.total = "";
+		});
 	};
 });
 
