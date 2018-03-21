@@ -1,18 +1,17 @@
 angular.module('app').factory('orderModel', function($http){
 	return {
-		addMenu : (data) => {
-			/*return $http({
+		sendOrder : (data) => {
+			return $http({
 				headers : {
 					'Content-Type': 'application/json',
 					'Authorization':'Bearer ' + data.token,
 				},
 				method	: 'POST',
-				url 	: 'api/sendMessage',
+				url 	: 'api/sendOrder',
 				data 	: {
-					'to' 		: data.to,
-					'message' 	: data.message
+					'total' 		: data.total_price,
 				}
-			});*/
+			});
 		},
 
 		getAllMenu : (id, token) => {

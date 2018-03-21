@@ -535,7 +535,10 @@ angular.module('app').controller('foodController', function ($scope, foodModel) 
 /* 16 */
 /***/ (function(module, exports) {
 
-angular.module('app').controller('orderController', function ($scope, foodModel) {
+angular.module('app').controller('orderController', function ($scope, foodModel, userModel, orderModel) {
+
+	$scope.session = userModel.getUserData();
+	var token = $scope.session.data.api_token;
 
 	// Show Data
 	$scope.getFood = function () {
@@ -559,8 +562,12 @@ angular.module('app').controller('orderController', function ($scope, foodModel)
 	};
 
 	$scope.addToList = function ($index) {
+
 		var food = $scope.food[$index];
+
 		myOrder.push(food);
+
+		$scope.choosen = $scope.food[$index].name;
 
 		$scope.getTotalOrder();
 	};
@@ -571,6 +578,20 @@ angular.module('app').controller('orderController', function ($scope, foodModel)
 		$scope.myOrderList.splice(id, 1);
 		console.log($scope.myOrderList);
 		$scope.getTotalOrder();
+	};
+
+	$scope.order = function () {
+		var total_price = $scope.total;
+		var data = {
+			total_price: total_price,
+			token: token
+		};
+
+		orderModel.sendOrder(data).then(function (response) {
+			console.log(response.data);
+		});
+
+		/*console.log(data);*/
 	};
 });
 

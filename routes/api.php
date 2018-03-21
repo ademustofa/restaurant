@@ -37,3 +37,7 @@ Route::post('/addFood', 'FoodController@store');
 Route::put('/updateFood', 'FoodController@update');
 Route::delete('/deleteFood', 'FoodController@destroy');
 
+// Order
+Route::post('/sendOrder', 'OrderController@store_order')->middleware('auth:api');
+Route::post('/sendOrderDetail', 'OrderController@store_order_detail')->middleware('auth:api');
+

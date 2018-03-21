@@ -390,19 +390,18 @@ angular.module('app').factory('foodModel', function ($http) {
 
 angular.module('app').factory('orderModel', function ($http) {
 	return {
-		addMenu: function addMenu(data) {
-			/*return $http({
-   	headers : {
-   		'Content-Type': 'application/json',
-   		'Authorization':'Bearer ' + data.token,
-   	},
-   	method	: 'POST',
-   	url 	: 'api/sendMessage',
-   	data 	: {
-   		'to' 		: data.to,
-   		'message' 	: data.message
-   	}
-   });*/
+		sendOrder: function sendOrder(data) {
+			return $http({
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + data.token
+				},
+				method: 'POST',
+				url: 'api/sendOrder',
+				data: {
+					'total': data.total_price
+				}
+			});
 		},
 
 		getAllMenu: function getAllMenu(id, token) {
